@@ -1,4 +1,4 @@
-configuration# Slasho
+# Slasho
 
 Slasho is a minimal framework for making Discord bots. It's for bot developers who want a clean, minimal environment with the core functionality they need to dive straight into building their bots.
 >  ⚠️  **Slasho is under heavy development**: Expect changes to the  underlying API as we build things out!
