@@ -20,7 +20,7 @@ npm install discord-slasho
 ```
 
 ## The Basics
-📚 _For full documentation, please visit (docs coming soon)_
+📚 _For full documentation, please visit [the docs](https://lehuyh.github.io/slasho)_
 
 ### Setting up the enviroment
 In the future, we will provide a scaffolding tool / templates. 
