@@ -1,4 +1,4 @@
-const Slasho = require('../dist/').default
+const Slasho = require('../dist/')
 
 const dummyConfig = {
     token: "test",

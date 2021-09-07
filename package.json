@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest --detectOpenHandles",
     "dev": "tsc --watch",
-    "build":"tsc",
+    "build": "tsc",
     "lint": "npx eslint ./src/*.ts --fix",
     "publish": "git push --tags && npm publish"
   },
@@ -44,5 +44,7 @@
     "discord.js": "^13.1.0",
     "glob": "^7.1.7"
   },
-  "files": ["dist/**/*"]
+  "files": [
+    "dist/**/*"
+  ]
 }
