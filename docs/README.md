@@ -68,7 +68,7 @@ export default {
   },
 } as Command<CommandInteraction>;
 ```
-Alternatively, you can pass commands as an array in configarution directly
+Alternatively, you can pass commands as an array in configuration directly
 ```ts
 {
   token: "YOUR_TOKEN",
@@ -80,8 +80,7 @@ Alternatively, you can pass commands as an array in configarution directly
 }
 ```
 ### Writing Events
-Events are very similar to commands and can be loaded via config.eventDir or an array of events in config.
-Slasho handles the execution of all base discord.js events, you can create and call your own custom events on the fly as well. Check the docs for more info on that.
+Events, like commands, can be loaded using config.eventDir or an array of event objects in config. Slasho handles the execution of all base discord.js events, and you can also create and call custom events on the fly. More information can be found the dedicated page for events.
 ```ts
 import { Event, ClientEvents } from "discord-slasho";
 

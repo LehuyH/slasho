@@ -1,4 +1,4 @@
-# Slasho
+configuration# Slasho
 
 Slasho is a minimal framework for making Discord bots. It's for bot developers who want a clean, minimal environment with the core functionality they need to dive straight into building their bots.
 >  ⚠️  **Slasho is under heavy development**: Expect changes to the  underlying API as we build things out!
@@ -81,8 +81,7 @@ Alternatively, you can pass commands as an array in configarution directly
 }
 ```
 ### Writing Events
-Events are very similar to commands and can be loaded via config.eventDir or an array of events in config.
-Slasho handles the execution of all base discord.js events, you can create and call your own custom events on the fly as well. Check the docs for more info on that.
+Events, like commands, can be loaded using config.eventDir or an array of events in config. Slasho handles the execution of all base discord.js events, and you can also create and call custom events on the fly. More information can be found in the docs.
 ```ts
 import { Event, ClientEvents } from "discord-slasho";
 
