@@ -16,7 +16,7 @@ Slasho is a minimal framework for making Discord bots. It's for bot developers w
 Use the package manager [npm](https://www.npmjs.com/) to install slasho.
 
 ```bash
-npm install slasho
+npm install discord-slasho
 ```
 
 ## The Basics
@@ -29,7 +29,7 @@ If you are using TS please make sure to build the bot using ``tsc`` or something
 import the Slasho.App class and initialize it by passing configuration in the first parameter. 
 It uses the same options as discord.js with a couple new options for Slasho
 ```ts
-import * as Slasho from 'slasho'
+import * as Slasho from 'discord-slasho'
 
 const bot = new Slasho.App<any>({
     token:"YOUR_TOKEN",
@@ -46,7 +46,7 @@ Here's a very basic example of what a command in Slasho looks like
 ```ts
 /* ./commands/ping.ts */
 import { CommandInteraction } from "discord.js";
-import { Command } from "slasho";
+import { Command } from "discord-slasho";
 
 export default {
   //Command metadata
@@ -83,7 +83,7 @@ Alternatively, you can pass commands as an array in configarution directly
 Events are very similar to commands and can be loaded via config.eventDir or an array of events in config.
 Slasho handles the execution of all base discord.js events, you can create and call your own custom events on the fly as well. Check the docs for more info on that.
 ```ts
-import { Event, ClientEvents } from "slasho";
+import { Event, ClientEvents } from "discord-slasho";
 
 export default {
   //Event name, can be any discord.js event or a custom defined one
