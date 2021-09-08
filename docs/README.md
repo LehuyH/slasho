@@ -78,6 +78,49 @@ To get your bot online, you need to run the ``launch`` function. At the bottom o
 ```ts
 bot.launch()
 ```
+### Launching your bot
+Simply run ``.launch()``
+```ts
+//Login to discord and binds events
+bot.launch()
+```
+> You can skip this step if you are using javascript
+Now, build your bot using ``tsc`` or another tool
+
+Run the built javascript file, hopefully if all goes well, you should see this in the console
+
+
+```bash
+i Connecting to Discord..
+i Mounting events..    
+ready Bot is Ready!  
+```
+If you are stuck on "Connecting to Discord", stop the script and run it after a while (Discord ratelimits connections)
+You should now see that the bot is online, nice! But have you noticed how there's no commands?
+
+By default, none of your commands are pushed to discord. You need to deploy commands __before__ you can use them.
+
+### Deploying Commands
+To deploy commands onto the testing server, simply run the ``.dev()``
+```ts
+bot.launch().then(()=>{
+    //Deploys loaded commands to the config.devGuild
+    bot.dev()
+})
+```
+Now, when you build and run the script, you should see something like this
+```bash
+i Connecting to Discord..
+i Mounting events..
+ready Bot is Ready!
+i Deploying Slash Commands to DevGuild..
+√ 1 Command(s) deployed on DevGuild NOTE: Dev commands are prefixed with dev-
+```
+Keep in mind that last note, dev commands are prefixed with dev-. So the ping command we just created will become ``/dev-ping`` in testing
+
+Try it out! It should be available on the bot now!
+
+Nice! It only took use a couple of lines to get slash commands working with Slasho.
 
 ### Writing Events
 Events, like commands, can be loaded using config.eventDir or an array of event objects in config. Slasho handles the execution of all base discord.js events, and you can also create and call custom events on the fly. More information can be found the dedicated page for events.
@@ -93,12 +136,6 @@ export default {
   },
 } as Event<keyof ClientEvents>;
 
-```
-### Launching your bot
-Simply run ``.launch()``
-```ts
-//Login to discord and binds events
-bot.launch()
 ```
 
 ### Deploying Commands
