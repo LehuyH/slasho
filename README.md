@@ -1,6 +1,19 @@
-# Slasho
+<p align="center"><img align="center" style="width:320px" src="https://raw.githubusercontent.com/LehuyH/slasho/main/.github/slasho_logo.png" /></p>
+<br />
+<p align="center">
+  <a href="https://github.com/LehuyH/slasho/blob/main/LICENSE">
+    <img alt="GitHub license"src="https://badgen.net/github/license/lehuyh/slasho"/>
+  </a>
+  <a href="https://github.com/LehuyH/slasho/">
+    <img alt="Release Tag"src="https://badgen.net/github/tag/lehuyh/slasho"/>
+  </a>
+  <a href="https://lehuyh.github.io/slasho/#/">
+    <img alt="Github Pages" src="https://badgen.net/badge/Documentation/GitHub%20Pages/green">
+  </a>
+</p>
 
-Slasho is a minimal framework for making Discord bots. It's for bot developers who want a clean, minimal environment with the core functionality they need to dive straight into building their bots.
+
+Slasho is a minimal framework for making Discord bots. It's for bot developers who want a clean environment with the core functionality they need to dive straight into building their bots.
 >  ⚠️  **Slasho is under heavy development**: Expect changes to the  underlying API as we build things out!
 ## Features
 * Uses modern Discord APIs (discord.js v13)

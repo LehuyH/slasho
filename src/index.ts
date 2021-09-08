@@ -177,9 +177,9 @@ export class App<StateType> {
   loadCommands(): this {
     const vm = this;
     const commandsDir = glob.sync(`${vm.config.commandsDir}/**/*.js`);
-    if (commandsDir.length === 0)
+    if (commandsDir.length === 0 && !this.config.commands)
       throw new Error(
-        `No commands found in directory "${vm.config.commandsDir}"`
+        `Please specify an array of commands or a (non empty) commandsDir in the configuration`
       );
 
     //Load from directory
