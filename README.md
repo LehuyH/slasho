@@ -38,7 +38,7 @@ Slasho is a minimal framework for making Discord bots. It's for bot developers w
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install slasho.
+Use the package manager [npm](https://www.npmjs.com/package/discord-slasho) to install slasho.
 
 ```bash
 npm install discord-slasho
