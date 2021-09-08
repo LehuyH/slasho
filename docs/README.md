@@ -84,8 +84,10 @@ Simply run ``.launch()``
 //Login to discord and binds events
 bot.launch()
 ```
-> You can skip this step if you are using javascript
+
 Now, build your bot using ``tsc`` or another tool
+
+> You can skip this build step if you are using javascript
 
 Run the built javascript file, hopefully if all goes well, you should see this in the console
 
