@@ -62,7 +62,7 @@ const pingCommand = {
 
   //Main execution function, this is where you should put command logic
   async execute({ interaction }) {
-    interaction.reply(` 🏓 ${interaction.options.getUser("user").username}`);
+    interaction.reply(` 🏓 ${interaction.member.user.username}`);
   },
 } as Slasho.Command<CommandInteraction>;
 ```
