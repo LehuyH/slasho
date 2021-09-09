@@ -12,20 +12,11 @@
   </a>
 </p>
 
+>   ⚠️  **Slasho is under heavy development**: Expect changes to the  underlying API as we build things out!
+
 Slasho is a minimal framework for making Discord bots. It's for bot developers who want a clean environment with the core functionality they need to dive straight into building their bots.
 
->  ⚠️  **Slasho is under heavy development**: Expect changes to the  underlying API as we build things out!
-
-
-<b><a href="https://lehuyh.github.io/slasho/#/?id=getting-started" target="_blank">📌 Getting Started Guide</a></b>
-
-## Features
-* Uses modern Discord APIs (discord.js v13)
-* Optional file-system based command and event handling system
-* Introduces command lifecycle utilities like init and validate'
-* Utility to handle deployment of slash commands in both development and production
-* Shared state across commands 
-
+[📌 Getting Started Guide](https://lehuyh.github.io/slasho/#/?id=getting-started)
 
 **When using discord.js, developers run into a number of problems**
 * A lot of boilerplate. It's not hard to write discord.js, but it can be difficult to maintain.
