@@ -21,15 +21,15 @@ npm install discord-slasho
 ### Creating a Bot
 > All examples are written in TypeScript! Please note that if you are using JavaScript, the examples are very similar (usually a matter of dropping the type annotations).
 
-Firstly, you need to setup a discord bot application. You can do so [here](https://discord.com/developers/applications). We assume that you have already configured the application and have obtained the ``token`` for the bot.
+Firstly, you need to set up a discord bot application. You can do so [here](https://discord.com/developers/applications). We assume that you have already configured the application and have obtained the ``token`` for the bot.
 
 ### Adding Your Bot To a Development Server
-It's best practice to test your bot and slash commands in a dedicated testing server. Add your bot into a development server and copy the ``server id``. Slasho will use this server as it's homebase during development!
+It's best practice to test your bot and slash commands in a dedicated testing server. Add your bot into a development server and copy the ``server-id``. Slasho will use this server as its home base during development!
 
 ### Creating a New Slasho.App
 Go ahead and create a new file named ``index.ts``. 
 Import the ``Slasho.App`` class and initialize it by passing configuration in the first parameter. 
-It uses the same options as a discord.js client with a couple new options for Slasho.
+It uses the same options as a discord.js client with a couple of new options for Slasho.
 
 The second parameter is a **default state**. You can think of this as something that can be accessed by any command or event. For now, we will pass in an empty object.
 
@@ -44,7 +44,7 @@ const bot = new Slasho.App<any>({
     //This is where our commands will go :)
     commands:[]
 },{})
-//That empty object is simply the default state. State is accessible across all events/commands
+//That empty object is simply the default state. The state is accessible across all events/commands
 ```
 
 ### Writing Your First Command
@@ -66,12 +66,12 @@ const pingCommand = {
   },
 } as Slasho.Command<CommandInteraction>;
 ```
-Now, let's add it into the bot configuration below.
+Now, let's add it to the bot configuration below.
 
 ```ts
 commands:[pingCommand]
 ```
-Awesome, that was easy! That's seriously all it takes to build commands with Slasho. Feel free to add a couple other commands if you want to :)
+Awesome, that was easy! That's seriously all it takes to build commands with Slasho. Feel free to add a couple of other commands if you want to :)
 ### Launching Your Bot
 Simply run ``.launch()``
 ```ts
@@ -83,7 +83,7 @@ Now, build your bot using ``tsc`` or another tool
 
 > You can skip this build step if you are using javascript
 
-Run the built javascript file, hopefully if all goes well, you should see this in the console
+Run the built javascript file, hopefully, if all goes well, you should see this in the console
 
 
 ```bash
@@ -92,7 +92,7 @@ i Mounting events..
 ready Bot is Ready!  
 ```
 If you are stuck on "Connecting to Discord", stop the script and run it after a while (Discord ratelimits connections)
-You should now see that the bot is online, nice! But have you noticed how there's no commands?
+You should now see that the bot is online, nice! But have you noticed how there are no commands?
 
 By default, none of your commands are pushed to discord. You need to deploy commands __before__ you can use them.
 
@@ -118,7 +118,7 @@ Try it out! It should be available on the bot now!
 
 <img alt="Slash commands working!" align="center" src="https://raw.githubusercontent.com/LehuyH/slasho/main/.github/slashcommand.png" />
 
-Nice! It only took use a couple of lines to get slash commands working with Slasho.
+Nice! It only took you a couple of lines to get slash commands working with Slasho.
 
 ### Adding Options to Commands
 Let's configure our ping command to collect some options from the user. Underneath the ping command's description, add the following
@@ -138,15 +138,15 @@ async execute({ interaction }) {
     interaction.reply(` 🏓 <@${await interaction.options.getUser('user').id}>`);
 }
 ```
-Rebuild an run your script. The bot should redeploy the changes into the ``/dev-ping`` command. Try it out!
+Rebuild and run your script. The bot should redeploy the changes into the ``/dev-ping`` command. Try it out!
 
 <img alt="Adding an option to our ping command" align="center" src="https://raw.githubusercontent.com/LehuyH/slasho/main/.github/options.png" />
 <img alt="It works!" align="center" src="https://raw.githubusercontent.com/LehuyH/slasho/main/.github/optionsreply.png" />
 
 ### Writing Your First Event
-Sometimes, you might run some code outside of a normal command. This is where **events** come in. Slasho provides an easy way to work with discord events. Let's create a new event handler right now!
+Sometimes, you might want to run some code outside of normal commands. This is where **events** come in. Slasho provides an easy way to work with discord events. Let's create a new event handler right now!
 
-> Some events will not be triggered if you did specifiy the corresponding discord intent in config.INTENT
+> Some events will not be triggered if the corresponding discord intent in config.INTENT is not specified
 
 Let's create a new event handler that will change the bot's status when the bot goes online. On top of your bot configuration, add the following
 ```ts
@@ -160,7 +160,7 @@ const onReady = {
 } as Slasho.Event<keyof Slasho.ClientEvents>;
 ```
 
-Again, let's add it into the bot configuration below.
+Again, let's add it to the bot configuration below.
 ```ts
 events:[onReady]
 ```
@@ -173,7 +173,7 @@ Slasho handles the triggering of events, all you need to do is provide the code 
 
 
 ### Deploying Commands Globally
-So far, the ping command is only available in your development server. Slasho provides utilities that can deploy commands globally. Modify the code that deploys commands to the dev server to the following
+So far, the ping command is only available on your development server. Slasho provides utilities that can deploy commands globally. Modify the code that deploys commands to the dev server to the following
 ```ts
 bot.launch().then(()=>{
     //Deploys to ALL servers
@@ -192,14 +192,14 @@ Nice! Please note that you have to wait (at most an hour) before you can use glo
 
 ### Conclusion
 🥳 That's all you need to get a modern discord bot up and running! Simple isn't it?
-Hopefully you find that Slasho provides a simple way to build up discord bots!
+Hopefully, you find that Slasho provides a simple way to build up discord bots!
 
 In this guide you
 * Built a modern bot with slash commands
 * Learned how to accept slash commands options
 * Learned how to test and deploy slash commands
 
-As you continue to build bigger bots, an issue you might face is that having a lot of commands and events can make code pretty messy! Luckily, you can used Slasho's **file based** commands/events
+As you continue to build bigger bots, an issue you might face is that having a lot of commands and events can make code pretty messy! Luckily, you can use Slasho's **file-based** commands/events
 
 Simply create a folder for events and commands and define them in the configuration.
 
