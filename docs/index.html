@@ -14,6 +14,9 @@
     .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section strong{
       color:white !important;
     }
+    .markdown-section tr:nth-child(2n) {
+      background-color: #3F3F3F;
+    }
   </style>
 </head>
 <body>
@@ -21,6 +24,8 @@
   <script>
     window.$docsify = {
       name: 'Slasho',
+      loadSidebar: true,
+      subMaxLevel: 3,
       repo: 'https://github.com/LehuyH/slasho/',
       themeColor: '#5865F2',
       logo:'https://raw.githubusercontent.com/LehuyH/slasho/main/.github/slasho_logo.png'

@@ -1,0 +1,2 @@
+* [Home](/)
+* [Commands](commands.md)
