@@ -311,19 +311,76 @@ export class App<StateType> {
       author: interaction.member,
     } as CommandContext<Discord.CommandInteraction>;
 
-    if (command.init) await command.init(ctx);
-    const validated = command.validate ? await command.validate(ctx) : true;
-    if (!validated) {
-      this.triggerEvent("validationError", [ctx, command]);
-      return this;
+    //Function to run when a hook throws an exception
+    const triggerError = async (
+        hookName: string,
+        err:string,
+        ctx: CommandContext<Discord.CommandInteraction>,
+        command:Command<Discord.CommandInteraction>
+      ):Promise<void> => {
+
+        try {
+          this.triggerEvent("commandError", [ctx, err, command]);
+          consola.error(`${hookName} hook for ${command.name} had an error! ${err}`);
+          if(command.error) await command.error(ctx)
+        } catch (err) {
+          this.triggerEvent("commandError", [ctx, err, command]);
+          consola.error(`${hookName} hook for ${command.name} had an error! ${err}`);
+        }
+
     }
 
-    try {
-      await command.execute(ctx);
-    } catch (err) {
-      consola.error(err);
-      this.triggerEvent("commandError", [ctx, err, command]);
+    //Array that sets up the hooks we will run
+    const hooks = ['init','validate','execute'] as (keyof Command<Discord.CommandInteraction>)[]
+    const middlewares = ['validate']
+    
+    //Interate and execute each hook
+    for(const hook of hooks){
+      //Ensure that the hook is registered and a function
+      if(!command[hook]) continue;
+      if(typeof command[hook] !== "function") continue;
+
+      if(middlewares.includes(hook)){
+        //Configure type correctly if response is a boolean
+         const hookMethod = command[hook] as (ctx: CommandContext<Discord.CommandInteraction>) => boolean;
+         try {
+           //Run method
+           const res = await hookMethod(ctx)
+           //If it did not return true, trigger a validationError and stop the loop
+           if (res !== true) {
+             this.triggerEvent("validationError", [ctx, command]);
+             break;
+           }
+           continue;
+         } catch (err) {
+            await triggerError(hook,err as string,ctx,command)
+            break;
+         }
+      }else{
+        const hookMethod = command[hook] as (ctx: CommandContext<Discord.CommandInteraction>) => void;
+        try {
+          //Run method
+          await hookMethod(ctx)
+          continue;
+        } catch (err) {
+          await triggerError("complete",err as string,ctx,command)
+          break;
+        }
+      }
+
+      
+      
     }
+
+    //Run complete hook
+    if(command.complete){
+      try{
+        await command.complete(ctx)
+      }catch (err){
+        await triggerError("complete",err as string,ctx,command)
+      }
+    }
+
     return this;
   }
 
