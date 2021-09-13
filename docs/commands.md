@@ -86,3 +86,27 @@ Here's a full example of how to write a command
 |``execute``|(ctx: CommandContext) => void;|[Execute Hook](#The-execute-hook)|No
 |``error``|(ctx: CommandContext) => void;|[Error Hook](#The-error-hook)|No
 |``complete``|(ctx: CommandContext) => void;|[Complete Hook](#The-complete-hook)|No
+
+
+## Deploying Commands
+Because of Discord's limits, Slasho does not publish commands that you create to discord automatically. Instead, Slasho provides utilities to help deploy commands in both development and production.
+
+### Development
+
+```ts
+//Bot is an instance of the Slasho.App Class
+bot.dev()
+```  
+
+This will publish commands onto your ``devGuild`` that was provided in configuration. Command names are prefixed with ``dev-`` so a ``/ping`` command would become ``/dev-ping``
+
+### Production
+
+```ts
+//Bot is an instance of the Slasho.App Class
+bot.production()
+```  
+
+This will publish commands onto your bot's application itself and it will be accessible globally.
+
+> Discord takes up to an hour to fully publish global commands. You might have to wait a bit for commands to update
