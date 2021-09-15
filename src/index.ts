@@ -363,7 +363,7 @@ export class App<StateType> {
           await hookMethod(ctx)
           continue;
         } catch (err) {
-          await triggerError("complete",err as string,ctx,command)
+          await triggerError(hook,err as string,ctx,command)
           break;
         }
       }
