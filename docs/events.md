@@ -12,7 +12,7 @@ app.triggerEvent("eventName", payload);
 
 ### Writing Events
 Events are an ``object`` with a type of ``Slasho.Event``
-Here's a full example of how to write a command
+Here's a full example of how to write an evnet
 ```ts
 {
   //Event metadata
@@ -33,5 +33,5 @@ The event context is an ``object`` that is passed as a parameter to the execute 
 |``client``|Discord.Client| The instance of the current Discord.js client the bot is using|
 |``event``|any| The event data, varies on the type of event|
 
-### Loading Commands
-Slasho will load all commands in the commands folder (if specified) as well as any events passed in the app's configuration"events" array.
+### Loading Events
+Slasho will load all events in the events folder (if specified) as well as any events passed in the app's configuration "events" array.
